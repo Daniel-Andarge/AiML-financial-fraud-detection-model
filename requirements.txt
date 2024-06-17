@@ -1,0 +1,7 @@
+awscli
+black
+flake8
+isort
+pip
+python-dotenv
+-e .

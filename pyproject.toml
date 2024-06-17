@@ -1,0 +1,32 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "aiml_adey_financial_fraud_detection_model"
+version = "0.0.1"
+description = "This project develops a machine learning-based fraud detection system using e-commerce, IP address-to-country, and banking transaction data. The goal is to create a model that can accurately identify fraudulent transactions."
+authors = [
+  { name = "Daniel Andarge" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License"
+]
+requires-python = "~=3.12.0rc3"
+
+[tool.black]
+line-length = 99
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+)/
+'''
+
+[tool.ruff.lint.isort]
+known_first_party = ["aiml_adey_financial_fraud_detection_model"]
+force_sort_within_sections = true
