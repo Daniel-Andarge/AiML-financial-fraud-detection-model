@@ -1,104 +1,261 @@
 import pandas as pd
-import numpy as np
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.impute import SimpleImputer
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-def load_datasets():
-    fraud_data = pd.read_csv('Fraud_Data.csv')
-    ip_data = pd.read_csv('IpAddress_to_Country.csv')
-    credit_card_data = pd.read_csv('creditcard.csv')
-    return fraud_data, ip_data, credit_card_data
-
-def find_missing_values(fraud_data, ip_data, credit_card_data):
-    fraud_missing = fraud_data.isnull().sum()
-    ip_missing = ip_data.isnull().sum()
-    credit_card_missing = credit_card_data.isnull().sum()
-    return fraud_missing, ip_missing, credit_card_missing
-
-def find_duplicates(fraud_data, ip_data, credit_card_data):
-    fraud_duplicates = fraud_data.duplicated().sum()
-    ip_duplicates = ip_data.duplicated().sum()
-    credit_card_duplicates = credit_card_data.duplicated().sum()
-    return fraud_duplicates, ip_duplicates, credit_card_duplicates
-
-def handle_missing_values(fraud_data, ip_data, credit_card_data):
-    fraud_data.fillna(method='ffill', inplace=True)
-    ip_data.fillna(method='ffill', inplace=True)
-    credit_card_data.fillna(method='ffill', inplace=True)
-    return fraud_data, ip_data, credit_card_data
-
-def remove_duplicates(fraud_data, ip_data, credit_card_data):
-    fraud_data.drop_duplicates(inplace=True)
-    ip_data.drop_duplicates(inplace=True)
-    credit_card_data.drop_duplicates(inplace=True)
-    return fraud_data, ip_data, credit_card_data
-
-def correct_data_types(fraud_data):
-    fraud_data['signup_time'] = pd.to_datetime(fraud_data['signup_time'])
-    fraud_data['purchase_time'] = pd.to_datetime(fraud_data['purchase_time'])
-    return fraud_data
-
-def ip_to_int(ip):
-    parts = ip.split('.')
-    return int(parts[0])*256**3 + int(parts[1])*256**2 + int(parts[2])*256 + int(parts[3])
-
-def merge_ip_data(fraud_data, ip_data):
-    fraud_data['ip_address'] = fraud_data['ip_address'].apply(ip_to_int)
-    ip_data['lower_bound_ip_address'] = ip_data['lower_bound_ip_address'].apply(ip_to_int)
-    ip_data['upper_bound_ip_address'] = ip_data['upper_bound_ip_address'].apply(ip_to_int)
-
-    fraud_data = fraud_data.sort_values('ip_address').reset_index(drop=True)
-    ip_data = ip_data.sort_values('lower_bound_ip_address').reset_index(drop=True)
     
-    fraud_data['country'] = np.nan
-    i = 0
-    for idx, row in fraud_data.iterrows():
-        while i < len(ip_data) and row['ip_address'] > ip_data.iloc[i]['upper_bound_ip_address']:
-            i += 1
-        if i < len(ip_data) and ip_data.iloc[i]['lower_bound_ip_address'] <= row['ip_address'] <= ip_data.iloc[i]['upper_bound_ip_address']:
-            fraud_data.at[idx, 'country'] = ip_data.iloc[i]['country']
-    return fraud_data
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.figure_factory as ff
+import plotly.express as px
 
-def feature_engineering(fraud_data):
-    # Transaction frequency and velocity
-    fraud_data['transaction_count'] = fraud_data.groupby('user_id')['user_id'].transform('count')
-    fraud_data['device_transaction_count'] = fraud_data.groupby('device_id')['device_id'].transform('count')
+def load_processed_data(file_path):
+    """
+    Load processed fraud dataset from file.
+
+    Parameters:
+    file_path (str): Path to the processed dataset CSV file.
+
+    Returns:
+    pd.DataFrame: Processed fraud dataset.
+    """
+    return pd.read_csv(file_path)
+
+def summary_statistics(dataframe, numeric_variables):
+    """
+    Display summary statistics for numeric variables.
+
+    Parameters:
+    dataframe (pd.DataFrame): Processed fraud dataset.
+    numeric_variables (list): List of numeric variable names.
+
+    Returns:
+    None
+    """
+    print("Summary Statistics:")
+    print(dataframe[numeric_variables].describe())
+
+def plot_histograms(dataframe, numeric_variables):
+    """
+    Plot histograms for numeric variables.
+
+    Parameters:
+    dataframe (pd.DataFrame): Processed fraud dataset.
+    numeric_variables (list): List of numeric variable names.
+
+    Returns:
+    None
+    """
+    plt.figure(figsize=(12, 6))
+    for i, col in enumerate(numeric_variables, start=1):
+        plt.subplot(2, 2, i)
+        sns.histplot(dataframe[col], kde=True)
+        plt.title(col)
+        plt.xlabel('')
+    plt.tight_layout()
+    plt.show()
+
+def plot_boxplots(dataframe, numeric_variables):
+    """
+    Plot box plots for numeric variables.
+
+    Parameters:
+    dataframe (pd.DataFrame): Processed fraud dataset.
+    numeric_variables (list): List of numeric variable names.
+
+    Returns:
+    None
+    """
+    plt.figure(figsize=(12, 6))
+    for i, col in enumerate(numeric_variables, start=1):
+        plt.subplot(2, 2, i)
+        sns.boxplot(x=dataframe[col])
+        plt.title(col)
+        plt.xlabel('')
+    plt.tight_layout()
+    plt.show()
+
+def frequency_counts(dataframe, categorical_variables):
+    """
+    Display frequency counts for categorical variables.
+
+    Parameters:
+    dataframe (pd.DataFrame): Processed fraud dataset.
+    categorical_variables (list): List of categorical variable names.
+
+    Returns:
+    None
+    """
+    print("\nFrequency Counts for Categorical Variables:")
+    for col in categorical_variables:
+        print(dataframe[col].value_counts(normalize=True))
+        print()
+
+def plot_countplots(dataframe, categorical_variables):
+    """
+    Plot bar plots for categorical variables.
+
+    Parameters:
+    dataframe (pd.DataFrame): Processed fraud dataset.
+    categorical_variables (list): List of categorical variable names.
+
+    Returns:
+    None
+    """
+    plt.figure(figsize=(12, 8))
+    for i, col in enumerate(categorical_variables, start=1):
+        plt.subplot(2, 2, i)
+        sns.countplot(x=col, data=dataframe, palette='viridis')
+        plt.title(col)
+        plt.xlabel('')
+        plt.ylabel('Count')
+    plt.tight_layout()
+    plt.show()
+
+def plot_scatterplot(dataframe, x_variable, y_variable):
+    """
+    Plot scatter plot for two numeric variables.
+
+    Parameters:
+    dataframe (pd.DataFrame): Processed fraud dataset.
+    x_variable (str): Name of the x-axis variable (numeric).
+    y_variable (str): Name of the y-axis variable (numeric).
+
+    Returns:
+    None
+    """
+    plt.figure(figsize=(8, 6))
+    sns.scatterplot(x=x_variable, y=y_variable, data=dataframe, alpha=0.5)
+    plt.title(f'{y_variable} vs {x_variable}')
+    plt.show()
+
+def plot_heatmap(dataframe, numeric_variables):
+    """
+    Plot correlation heatmap for numeric variables.
+
+    Parameters:
+    dataframe (pd.DataFrame): Processed fraud dataset.
+    numeric_variables (list): List of numeric variable names.
+
+    Returns:
+    None
+    """
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(dataframe[numeric_variables].corr(), annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
+    plt.title('Correlation Heatmap of Numeric Variables')
+    plt.show()
+
+def plot_boxplot_by_category(dataframe, x_variable, y_variable):
+    """
+    Plot box plot of a numeric variable by a categorical variable.
+
+    Parameters:
+    dataframe (pd.DataFrame): Processed fraud dataset.
+    x_variable (str): Name of the categorical variable for x-axis.
+    y_variable (str): Name of the numeric variable for y-axis.
+
+    Returns:
+    None
+    """
+    plt.figure(figsize=(8, 6))
+    sns.boxplot(x=x_variable, y=y_variable, data=dataframe, palette='Set2')
+    plt.title(f'{y_variable} by {x_variable}')
+    plt.show()
+
+def plot_stacked_barplot(dataframe, x_variable, hue_variable, hue_categories):
+    """
+    Plot stacked bar plot of a categorical variable by another categorical variable.
+
+    Parameters:
+    dataframe (pd.DataFrame): Processed fraud dataset.
+    x_variable (str): Name of the x-axis categorical variable.
+    hue_variable (str): Name of the hue variable for stacking bars.
+    hue_categories (list): List of categories in the hue variable.
+
+    Returns:
+    None
+    """
+    plt.figure(figsize=(10, 6))
+    stacked_data = dataframe.groupby(x_variable)[hue_variable].value_counts(normalize=True).unstack()
+    stacked_data[hue_categories].plot(kind='bar', stacked=True, figsize=(10, 6))
+    plt.title(f'Fraud Class Distribution by {x_variable}')
+    plt.xlabel(x_variable)
+    plt.ylabel('Proportion')
+    plt.legend(title=hue_variable, labels=hue_categories, loc='upper right')
+    plt.show()
+
+
+
+# PLOTLY
+def exploratory_data_analysis(df):
+    """
+    Performs Exploratory Data Analysis (EDA) on the given dataset.
     
-    # Time-Based Features
-    fraud_data['hour_of_day'] = fraud_data['purchase_time'].dt.hour
-    fraud_data['day_of_week'] = fraud_data['purchase_time'].dt.dayofweek
-    return fraud_data
+    Args:
+        df (pandas.DataFrame): The input dataset.
+    """
+    # Univariate Analysis
+    
+    # Numerical Features
+    num_features = ['user_id', 'purchase_value', 'age', 'ip_address', 'class']
+    for feature in num_features:
+        fig = go.Figure()
+        fig.add_trace(go.Histogram(x=df[feature]))
+        fig.update_layout(title=f'Distribution of {feature}')
+        fig.show()
+    
+    # Categorical Features
+    cat_features = ['device_id', 'source', 'browser', 'sex', 'country']
+    for feature in cat_features:
+        fig = px.bar(df[feature].value_counts(), x=df[feature].value_counts().index, y=df[feature].value_counts())
+        fig.update_layout(title=f'Distribution of {feature}')
+        fig.show()
+    
+    # Bivariate Analysis
+    
+    # Relationship between Numerical Features
+    fig = ff.create_scatterplotmatrix(df[num_features], diag='histogram')
+    fig.update_layout(title='Relationship between Numerical Features')
+    fig.show()
+    
+    # Relationship between Numerical and Categorical Features
+    for num_feature in num_features:
+        for cat_feature in cat_features:
+            fig = px.box(df, x=cat_feature, y=num_feature)
+            fig.update_layout(title=f'Relationship between {cat_feature} and {num_feature}')
+            fig.show()
+    
+    # Relationship between Target Variable and Other Features
+    fig = go.Figure(data=go.Heatmap(
+        x=df.columns,
+        y=df.columns,
+        z=df.corr(),
+        colorscale='YlOrRd'
+    ))
+    fig.update_layout(title='Correlation Heatmap')
+    fig.show()
 
-def normalize_and_scale(fraud_data):
-    scaler = StandardScaler()
-    scaled_features = ['purchase_value', 'age', 'transaction_count', 'device_transaction_count']
-    fraud_data[scaled_features] = scaler.fit_transform(fraud_data[scaled_features])
-    return fraud_data
 
-def encode_categorical_features(fraud_data):
-    encoder = OneHotEncoder(sparse=False)
-    categorical_features = ['source', 'browser', 'sex', 'country']
-    encoded_features = encoder.fit_transform(fraud_data[categorical_features])
-    encoded_df = pd.DataFrame(encoded_features, columns=encoder.get_feature_names_out(categorical_features))
-    fraud_data = fraud_data.join(encoded_df)
-    fraud_data.drop(columns=categorical_features, inplace=True)
-    return fraud_data
 
-def save_processed_data(fraud_data, filename='Processed_Fraud_Data.csv'):
-    fraud_data.to_csv(filename, index=False)
-
-# Main execution flow
-def main():
-    fraud_data, ip_data, credit_card_data = load_datasets()
-    fraud_data, ip_data, credit_card_data = handle_missing_values(fraud_data, ip_data, credit_card_data)
-    fraud_data, ip_data, credit_card_data = remove_duplicates(fraud_data, ip_data, credit_card_data)
-    fraud_data = correct_data_types(fraud_data)
-    fraud_data = merge_ip_data(fraud_data, ip_data)
-    fraud_data = feature_engineering(fraud_data)
-    fraud_data = normalize_and_scale(fraud_data)
-    fraud_data = encode_categorical_features(fraud_data)
-    save_processed_data(fraud_data)
-
-# RunMain function
-if __name__ == '__main__':
-    main()
+def fraud_class_distribution(df):
+    """
+    Visualizes the distribution of the 'class' (target variable) across different features.
+    
+    Args:
+        df (pandas.DataFrame): The input dataset.
+    """
+    # Fraud class distribution by numerical features
+    num_features = ['age']
+    for feature in num_features:
+        fig = px.histogram(df, x=feature, color='class', barmode='group')
+        fig.update_layout(title=f'Fraud Class Distribution by {feature}')
+        fig.show()
+    
+    # Fraud class distribution by categorical features
+    cat_features = ['source', 'browser', 'sex', 'country']
+    for feature in cat_features:
+        fig = px.bar(df.groupby(['class', feature]).size().reset_index(name='count'), x=feature, y='count', color='class')
+        fig.update_layout(title=f'Fraud Class Distribution by {feature}')
+        fig.show()
