@@ -265,7 +265,7 @@ def fraud_class_distribution(df):
     plt.show()
     
     # Fraud class distribution by categorical features (2 plots per row)
-    cat_features = ['source', 'browser', 'sex', 'country']
+    cat_features = ['source', 'browser', 'sex']
     cat_plots = len(cat_features)
     cat_rows = (cat_plots + 1) // 2 
     fig, axes = plt.subplots(cat_rows, 2, figsize=(16, cat_rows * 6))
@@ -280,14 +280,18 @@ def fraud_class_distribution(df):
         ax.legend(title='Class', loc='upper right', labels=['Non-Fraud', 'Fraud'])
         ax.tick_params(axis='x', rotation=45)
     
-    # Remove any unused subplot axes
-    for j in range(i + 1, len(axes)):
-        fig.delaxes(axes[j])
+    # Plot the top 10 categories for the 'country' feature
+    ax = axes[-1]
+    top_categories = df['country'].value_counts().head(10).index
+    sns.countplot(x='country', hue='class', data=df[df['country'].isin(top_categories)], palette='viridis', ax=ax)
+    ax.set_title('Fraud Class Distribution by Top 10 Countries')
+    ax.set_xlabel('Country')
+    ax.set_ylabel('Count')
+    ax.legend(title='Class', loc='upper right', labels=['Non-Fraud', 'Fraud'])
+    ax.tick_params(axis='x', rotation=45)
     
     plt.tight_layout()
     plt.show()
-
-
 
 def time_series_analysis(df):
     """
