@@ -102,7 +102,36 @@ def convert_ip_and_merge(fraud_data, ip_to_country):
 
 
 
-
+def remove_outliers(df, class_col='class'):
+    """
+    Removes outliers from a DataFrame based on the IQR method, except for the "class" feature.
+    
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+    class_col (str): The name of the "class" feature column. Default is 'class'.
+    
+    Returns:
+    pandas.DataFrame: The DataFrame with outliers removed.
+    """
+    # Get the numeric columns, excluding the "class" feature
+    numeric_cols = df.select_dtypes(include=['float64', 'int64', 'uint64']).columns
+    numeric_cols = numeric_cols[~numeric_cols.isin([class_col])]
+    
+    # Create a new DataFrame to store the cleaned data
+    cleaned_df = df.copy()
+    
+    # Iterate over the numeric columns and remove outliers
+    for col in numeric_cols:
+        q1 = df[col].quantile(0.25)
+        q3 = df[col].quantile(0.75)
+        iqr = q3 - q1
+        lower_bound = q1 - 1.5 * iqr
+        upper_bound = q3 + 1.5 * iqr
+        
+        # Remove outliers and update the cleaned DataFrame
+        cleaned_df = cleaned_df[(cleaned_df[col] >= lower_bound) & (cleaned_df[col] <= upper_bound)]
+    
+    return cleaned_df
 
 
 
