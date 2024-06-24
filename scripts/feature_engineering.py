@@ -1,6 +1,10 @@
 import pandas as pd
 import xxhash
 import numpy as np
+#import ipaddress
+#import geoip2.database
+#from datetime import timedelta
+
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, LabelEncoder
 
 
@@ -10,63 +14,68 @@ class FeatureEngineering:
         self.scaler = StandardScaler()
         self.normalizer = MinMaxScaler()
 
-    def create_user_profile_features(self):
+
+    def create_features(self):
         """
-        Create hashed features for device_id and combined ip_address with device_id.
+        Create Timestamp-based Features, Transaction Value-based Features, Device-based Features, User-based Features, Geolocation-based Features, Behavioral-based Features, Transaction Frequency, and Transaction Velocity from the given DataFrame.
+
+        Parameters:
+        self (FeatureEngineering): The FeatureEngineering object.
+
+        Returns:
+        pandas.DataFrame: The original DataFrame with the new features added.
         """
-        if 'device_id' in self.df.columns and 'ip_address' in self.df.columns:
-            self.df['device_id_hash'] = self.df['device_id'].apply(
-                lambda x: xxhash.xxh64(str(x).encode('utf-8')).intdigest()
-            )
 
-            self.df['ip_device_hash'] = self.df.apply(
-                lambda row: xxhash.xxh64((str(row['ip_address']) + str(row['device_id_hash'])).encode('utf-8')).intdigest(),
-                axis=1
-            )
+        # Timestamp-based Features
+        self.df['hour_of_day'] = self.df['purchase_time'].dt.hour
+        self.df['day_of_week'] = self.df['purchase_time'].dt.dayofweek
+        self.df['time_since_signup'] = (self.df['purchase_time'] - self.df['signup_time']).dt.days
 
-    def transaction_frequency_velocity(self):
-        """
-        Calculate transaction frequency and velocity (transactions per day) per user.
-        """
-        if 'user_id' in self.df.columns and 'signup_time' in self.df.columns and 'purchase_time' in self.df.columns:
-            # Calculate transaction frequency per user
-            user_transaction_count = self.df.groupby('user_id').size().reset_index(name='user_transaction_count')
-            self.df = pd.merge(self.df, user_transaction_count, on='user_id', how='left')
+        # Transaction Value-based Features
+        self.df['purchase_value_log'] = np.log(self.df['purchase_value'])
+        self.df['purchase_value_percentile'] = self.df['purchase_value'].rank(method='dense', pct=True)
 
-            # Calculate transaction velocity (transactions per day) for users
-            self.df['signup_time'] = pd.to_datetime(self.df['signup_time'])
-            self.df['purchase_time'] = pd.to_datetime(self.df['purchase_time'])
-            self.df['days_since_signup'] = (self.df['purchase_time'] - self.df['signup_time']).dt.days
-            self.df['days_since_signup'] = self.df['days_since_signup'].replace(0, 1)  # Avoid division by zero
+        # Device-based Feature
+        self.df['device_reuse'] = self.df.groupby('device_id')['device_id'].transform('count') > 1
 
-            self.df['user_transaction_velocity'] = self.df['user_transaction_count'] / self.df['days_since_signup']
+        # User-based Features
+        self.df['num_transactions'] = self.df.groupby('user_id')['user_id'].transform('count')
+        self.df['avg_purchase_value'] = self.df.groupby('user_id')['purchase_value'].transform('mean')
 
-            # Dropping intermediate columns
-            self.df.drop(columns=['days_since_signup'], inplace=True)
 
-    def time_based_features(self):
-        """
-        Extract time-based features from signup and purchase times.
-        """
-        if 'signup_time' in self.df.columns and 'purchase_time' in self.df.columns:
-            self.df['purchase_time'] = pd.to_datetime(self.df['purchase_time'])
-            self.df['signup_time'] = pd.to_datetime(self.df['signup_time'])
+        # Geolocation-based Features
+        self.df['ip_country'] = self.df['country']
+        self.df['ip_location_change'] = self.df.groupby('user_id')['ip_country'].shift(1) != self.df['ip_country']
 
-            # Extract hour of day and day of week for purchase_time
-            self.df['purchase_hour_of_day'] = self.df['purchase_time'].dt.hour
-            self.df['purchase_day_of_week'] = self.df['purchase_time'].dt.dayofweek
+        # Behavioral-based Features
+        self.df['source_change'] = self.df.groupby('user_id')['source'].shift(1) != self.df['source']
+        self.df['browser_change'] = self.df.groupby('user_id')['browser'].shift(1) != self.df['browser']
 
-            # Extract hour of day and day of week for signup_time
-            self.df['signup_hour_of_day'] = self.df['signup_time'].dt.hour
-            self.df['signup_day_of_week'] = self.df['signup_time'].dt.dayofweek
+  
+        # Calculate user transaction count
+        user_transaction_count = self.df.groupby('user_id').size().reset_index(name='user_transaction_count')
+        self.df = pd.merge(self.df, user_transaction_count, on='user_id', how='left')
+
+        # Calculate transaction velocity transactions per day for users
+        self.df['signup_time'] = pd.to_datetime(self.df['signup_time'])
+        self.df['purchase_time'] = pd.to_datetime(self.df['purchase_time'])
+        self.df['days_since_signup'] = (self.df['purchase_time'] - self.df['signup_time']).dt.days
+        self.df['days_since_signup'] = self.df['days_since_signup'].replace(0, 1)  
+
+        self.df['user_transaction_velocity'] = self.df['user_transaction_count'] / self.df['days_since_signup']
+
+        # Dropping intermediate columns
+        self.df.drop(columns=['days_since_signup'], inplace=True)
+
+        return self.df
 
     def encode_categorical_features(self):
         """
         Encode categorical features using specified encoding methods.
         """
         if 'country' in self.df.columns:
-            # Hashing Encoding for country_id_hash
-            self.df['country_id_hash'] = self.df['country'].apply(
+            # Hashing Encoding for 
+            self.df['ip_country_hash'] = self.df['ip_country'].apply(
                 lambda x: np.uint64(xxhash.xxh64(str(x).encode('utf-8')).intdigest())
             )
 
@@ -80,24 +89,28 @@ class FeatureEngineering:
             browser_freq = self.df['browser'].value_counts(normalize=True)
             self.df['browser_encoded'] = self.df['browser'].map(browser_freq)
 
-        if 'sex' in self.df.columns:
-            # Label Encoding for sex
-            encoder_sex = LabelEncoder()
-            self.df['sex_encoded'] = encoder_sex.fit_transform(self.df['sex'])
+        # Label Encoding for boolean features
+        boolean_features = ['device_reuse', 'ip_location_change', 'source_change', 'browser_change', 'sex']
+        if all(feature in self.df.columns for feature in boolean_features):
+            encoder_bool = LabelEncoder()
+            for feature in boolean_features:
+                self.df[f"{feature}_encoded"] = encoder_bool.fit_transform(self.df[feature])
 
         # Drop original categorical columns
-        self.df.drop(columns=['device_id', 'country', 'source', 'browser', 'sex', 'signup_time', 'purchase_time'], inplace=True, errors='ignore')
+        self.df.drop(columns=['device_reuse', 'ip_location_change', 'source_change', 'browser_change','device_id','country', 'ip_country', 'source', 'browser', 'sex', 'signup_time', 'purchase_time'], inplace=True, errors='ignore')
 
     def scale_features(self):
         """
-        Scale numeric features using StandardScaler, while keeping the target feature ('class') unscaled.
+        Scale numeric features using StandardScaler, while keeping the encoded boolean features and the target feature ('class') unscaled.
         """
-        # Select the numeric columns, excluding the target feature ('class')
-        numeric_columns = [col for col in self.df.select_dtypes(include=['float64', 'int32', 'int64', 'uint64']).columns if col != 'class']
+        # Select the numeric columns, excluding the encoded boolean features and the target feature ('class')
+        numeric_columns = [col for col in self.df.select_dtypes(include=['float64', 'int32', 'int64', 'uint64']).columns
+                        if col not in ['device_reuse_encoded', 'ip_location_change_encoded', 'source_change_encoded',
+                                        'browser_change_encoded', 'sex_encoded', 'class']]
         
         # Scale the numeric features
         self.df[numeric_columns] = self.scaler.fit_transform(self.df[numeric_columns])
-    
+        
         return self.df
 
     def undersample(self):
@@ -114,9 +127,7 @@ class FeatureEngineering:
         """
         Perform full preprocessing pipeline.
         """
-        self.create_user_profile_features()
-        self.transaction_frequency_velocity()
-        self.time_based_features()
+        self.create_features()
         self.encode_categorical_features()
         self.undersample()
         self.df = self.scale_features()
