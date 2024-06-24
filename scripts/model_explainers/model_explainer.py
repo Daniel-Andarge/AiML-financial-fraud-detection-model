@@ -62,4 +62,3 @@ def explain_with_lime(model, X_test, feature_names=None):
     plt.tight_layout()
     plt.show()
 
-    #return fig
