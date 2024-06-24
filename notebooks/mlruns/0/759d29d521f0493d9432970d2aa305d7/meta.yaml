@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/759d29d521f0493d9432970d2aa305d7/artifacts
+end_time: 1719257279084
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 759d29d521f0493d9432970d2aa305d7
+run_name: rogue-pig-67
+run_uuid: 759d29d521f0493d9432970d2aa305d7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719257272685
+status: 4
+tags: []
+user_id: Administrator

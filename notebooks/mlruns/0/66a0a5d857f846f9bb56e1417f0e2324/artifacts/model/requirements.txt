@@ -1,0 +1,11 @@
+mlflow==2.14.1
+cloudpickle==3.0.0
+numpy==1.26.4
+packaging==24.1
+pandas==2.2.2
+psutil==5.9.8
+pyyaml==6.0.1
+scikit-learn==1.5.0
+scipy==1.13.1
+uuid==1.30
+xgboost==2.1.0

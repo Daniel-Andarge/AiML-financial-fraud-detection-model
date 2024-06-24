@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/2f39c97cd31a4e63873a1739d4383726/artifacts
+end_time: 1719264514079
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2f39c97cd31a4e63873a1739d4383726
+run_name: defiant-shoat-43
+run_uuid: 2f39c97cd31a4e63873a1739d4383726
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719264510864
+status: 3
+tags: []
+user_id: Administrator

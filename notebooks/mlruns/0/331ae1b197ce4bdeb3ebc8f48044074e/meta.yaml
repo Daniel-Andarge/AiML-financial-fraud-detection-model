@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/331ae1b197ce4bdeb3ebc8f48044074e/artifacts
+end_time: 1719260862478
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 331ae1b197ce4bdeb3ebc8f48044074e
+run_name: thundering-lynx-403
+run_uuid: 331ae1b197ce4bdeb3ebc8f48044074e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719260858963
+status: 3
+tags: []
+user_id: Administrator

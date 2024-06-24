@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/11c7622b8fc34b61b7f797300ee54544/artifacts
+end_time: 1719266558780
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 11c7622b8fc34b61b7f797300ee54544
+run_name: dazzling-ant-269
+run_uuid: 11c7622b8fc34b61b7f797300ee54544
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719266480866
+status: 4
+tags: []
+user_id: Administrator

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/c2f5984818984970bb64dc36326bf1fb/artifacts
+end_time: 1719262800028
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c2f5984818984970bb64dc36326bf1fb
+run_name: nervous-hound-986
+run_uuid: c2f5984818984970bb64dc36326bf1fb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719262797193
+status: 3
+tags: []
+user_id: Administrator

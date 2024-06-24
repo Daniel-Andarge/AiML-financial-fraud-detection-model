@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/9cd554bea0d44ee89ef7cccd0d8b107b/artifacts
+end_time: 1719259707888
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9cd554bea0d44ee89ef7cccd0d8b107b
+run_name: bemused-crane-764
+run_uuid: 9cd554bea0d44ee89ef7cccd0d8b107b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719259702555
+status: 4
+tags: []
+user_id: Administrator

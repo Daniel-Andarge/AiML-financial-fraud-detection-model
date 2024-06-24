@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/c5dfde485659422f9abcff65e4bf7ea5/artifacts
+end_time: 1719259023195
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c5dfde485659422f9abcff65e4bf7ea5
+run_name: nimble-bee-769
+run_uuid: c5dfde485659422f9abcff65e4bf7ea5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719259018239
+status: 4
+tags: []
+user_id: Administrator

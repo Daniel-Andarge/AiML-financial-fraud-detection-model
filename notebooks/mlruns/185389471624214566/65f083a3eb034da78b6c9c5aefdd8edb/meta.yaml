@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/185389471624214566/65f083a3eb034da78b6c9c5aefdd8edb/artifacts
+end_time: 1719260534152
+entry_point_name: ''
+experiment_id: '185389471624214566'
+lifecycle_stage: active
+run_id: 65f083a3eb034da78b6c9c5aefdd8edb
+run_name: my_run
+run_uuid: 65f083a3eb034da78b6c9c5aefdd8edb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719260163762
+status: 3
+tags: []
+user_id: Administrator

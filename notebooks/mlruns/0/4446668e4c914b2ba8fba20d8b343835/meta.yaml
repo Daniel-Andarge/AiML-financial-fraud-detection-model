@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/4446668e4c914b2ba8fba20d8b343835/artifacts
+end_time: 1719264033310
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4446668e4c914b2ba8fba20d8b343835
+run_name: grandiose-midge-442
+run_uuid: 4446668e4c914b2ba8fba20d8b343835
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719264029593
+status: 3
+tags: []
+user_id: Administrator
