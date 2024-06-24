@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/cfea3ef46c174d51b7b7962c68966b7b/artifacts
+end_time: 1719264502828
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cfea3ef46c174d51b7b7962c68966b7b
+run_name: unruly-frog-839
+run_uuid: cfea3ef46c174d51b7b7962c68966b7b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719264499376
+status: 3
+tags: []
+user_id: Administrator

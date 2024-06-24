@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/4ca62dde58e94939950b8a4f6e5b196f/artifacts
+end_time: 1719266890407
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4ca62dde58e94939950b8a4f6e5b196f
+run_name: unruly-rook-905
+run_uuid: 4ca62dde58e94939950b8a4f6e5b196f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719266887098
+status: 3
+tags: []
+user_id: Administrator

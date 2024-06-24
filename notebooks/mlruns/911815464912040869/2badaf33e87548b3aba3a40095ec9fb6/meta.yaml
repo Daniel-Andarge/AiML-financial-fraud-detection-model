@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/911815464912040869/2badaf33e87548b3aba3a40095ec9fb6/artifacts
+end_time: 1719257147384
+entry_point_name: ''
+experiment_id: '911815464912040869'
+lifecycle_stage: active
+run_id: 2badaf33e87548b3aba3a40095ec9fb6
+run_name: stately-sheep-226
+run_uuid: 2badaf33e87548b3aba3a40095ec9fb6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719256504326
+status: 3
+tags: []
+user_id: Administrator

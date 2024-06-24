@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/223c6b2e2d5549de8917382557f88522/artifacts
+end_time: 1719265221141
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 223c6b2e2d5549de8917382557f88522
+run_name: capable-lynx-124
+run_uuid: 223c6b2e2d5549de8917382557f88522
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719265217575
+status: 3
+tags: []
+user_id: Administrator

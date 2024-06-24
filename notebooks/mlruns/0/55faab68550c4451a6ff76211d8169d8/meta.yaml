@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/55faab68550c4451a6ff76211d8169d8/artifacts
+end_time: 1719266883894
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 55faab68550c4451a6ff76211d8169d8
+run_name: wise-calf-862
+run_uuid: 55faab68550c4451a6ff76211d8169d8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719266878575
+status: 3
+tags: []
+user_id: Administrator

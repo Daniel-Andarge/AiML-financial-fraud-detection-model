@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/00e13b8d2a69448ba89e3d6c3e2ffbb4/artifacts
+end_time: 1719264029572
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 00e13b8d2a69448ba89e3d6c3e2ffbb4
+run_name: merciful-gull-420
+run_uuid: 00e13b8d2a69448ba89e3d6c3e2ffbb4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719264026297
+status: 3
+tags: []
+user_id: Administrator

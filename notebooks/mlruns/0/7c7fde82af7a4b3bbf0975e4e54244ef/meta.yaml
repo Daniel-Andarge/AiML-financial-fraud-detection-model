@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/7c7fde82af7a4b3bbf0975e4e54244ef/artifacts
+end_time: 1719264506708
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7c7fde82af7a4b3bbf0975e4e54244ef
+run_name: abundant-yak-83
+run_uuid: 7c7fde82af7a4b3bbf0975e4e54244ef
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719264502846
+status: 3
+tags: []
+user_id: Administrator

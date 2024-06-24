@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/1faa6c815f274dc0954e38851be13789/artifacts
+end_time: 1719265217551
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1faa6c815f274dc0954e38851be13789
+run_name: gregarious-wolf-58
+run_uuid: 1faa6c815f274dc0954e38851be13789
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719265214282
+status: 3
+tags: []
+user_id: Administrator

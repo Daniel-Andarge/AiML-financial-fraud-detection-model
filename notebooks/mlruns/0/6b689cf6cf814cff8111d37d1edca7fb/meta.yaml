@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Administrator/Downloads/10-Academy/week-8/AiML-financial-fraud-detection-model/notebooks/mlruns/0/6b689cf6cf814cff8111d37d1edca7fb/artifacts
+end_time: 1719262483675
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6b689cf6cf814cff8111d37d1edca7fb
+run_name: painted-hare-684
+run_uuid: 6b689cf6cf814cff8111d37d1edca7fb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719262480648
+status: 3
+tags: []
+user_id: Administrator
