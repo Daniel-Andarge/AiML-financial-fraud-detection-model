@@ -14,7 +14,7 @@ Adey Innovations Inc. seeks to enhance the detection of fraudulent transactions 
 
 ### Dependence Plot
 
-![depndeplot](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/featurePlot.png)
+![depndeplot](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/featureImpo.png)
 
 ## Model Explainability Using LIME
 
