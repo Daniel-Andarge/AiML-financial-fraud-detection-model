@@ -2,13 +2,26 @@
 
 Adey Innovations Inc. seeks to enhance the detection of fraudulent transactions in e-commerce and banking sectors. This project focuses on developing advanced machine learning models to identify fraud with high accuracy by analyzing transaction data, creating sophisticated features, and implementing real-time monitoring systems. By improving fraud detection, Adey Innovations Inc. aims to reduce financial losses, bolster transaction security, and build stronger trust with customers and financial institutions. The project entails data preprocessing, feature engineering, model development, evaluation, and deployment, ensuring a comprehensive approach to combating fraud.
 
+## Table of Contents
+
+1. [Exploratory Data Analysis (EDA)line](<#1.-exploratory-data-analysis-(eda)>)
+2. [Model Building and Training](#2.-model-building-and-training)
+3. [Model Explainability Using SHAP](#3.-model-explainability-using-shap)
+4. [Model Deployment and API Development](#4.-model-deployment-and-api-development)
+5. [Contributing](#contributing)
+6. [License](#license)
+
 ## 1. Exploratory Data Analysis (EDA)
 
 ### Univariate analysis
 
+![featureEng](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/eda/his1.png)
+
 ### Bivariate analysis
 
 ### Feature Engineering
+
+![featureEng](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/eda/featured_df.png)
 
 ## 2. Model Building and Training
 
@@ -56,3 +69,11 @@ png)
 ### Running Docker Container
 
 ![runflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/docker-run.png)
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
