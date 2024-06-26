@@ -16,13 +16,19 @@ After trainig and testing 6 models 3 for each datasets i select the below models
 
 #### 2.1 Fraud-IP Dataset - XGBoost Model
 
-#### 2.2 Credit Card Dataset
+![xgboost](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/xg1.png)
+![xgboost2](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/xg2.png)
+
+#### 2.2 Credit Card Dataset - Logistic Regression with StandardScaler
+
+![lr1](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/lr1.png)
+![lr2](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/lr2.png)
 
 ## 3. Model Explainability Using SHAP
 
 ### Summary Plot
 
-![summeryplot](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/summryPlot.png)
+<img src="https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/summryPlot.png" alt="summeryplot" width="600"/>
 
 ### Force Plot
 
@@ -32,10 +38,21 @@ After trainig and testing 6 models 3 for each datasets i select the below models
 
 ### Running the flask app
 
+![runflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/run-flask.png)
+
 ### Testing the api
+
+![testflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/test-flask.png
+png)
 
 ### Testing the api from Postman
 
+![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman.png)
+
 ### Building Docker Image
 
+![build](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/build-docker-image.png)
+
 ### Running Docker Container
+
+![runflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/docker-run.png)
