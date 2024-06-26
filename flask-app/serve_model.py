@@ -13,6 +13,10 @@ app = Flask(__name__)
 with open('../models/fraud_detection_xgb_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
+@app.route('/')
+def home():
+    return ("Welvome to ML based fraud detction")
+
 @app.route('/detect', methods=['POST'])
 def detect():
     try:
