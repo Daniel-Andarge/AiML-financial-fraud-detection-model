@@ -6,9 +6,13 @@ Adey Innovations Inc. seeks to enhance the detection of fraudulent transactions 
 
 ### Univariate analysis
 
+![featureEng](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/eda/his1.png)
+
 ### Bivariate analysis
 
 ### Feature Engineering
+
+![featureEng](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/eda/featured_df.png)
 
 ## 2. Model Building and Training
 
