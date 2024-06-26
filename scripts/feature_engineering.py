@@ -1,10 +1,6 @@
 import pandas as pd
 import xxhash
 import numpy as np
-#import ipaddress
-#import geoip2.database
-#from datetime import timedelta
-
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, LabelEncoder
 
 
