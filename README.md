@@ -57,9 +57,6 @@ After training and testing six models (three for each dataset), we selected the 
 
 ![testflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/test-flask.png)
 
-### Testing the API from Postman
-
-![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman.png)
 
 ### Building Docker Image
 
@@ -68,6 +65,10 @@ After training and testing six models (three for each dataset), we selected the 
 ### Running Docker Container
 
 ![runflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/docker-run.png)
+
+### Testing the API from Postman
+
+![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman.png)
 
 ## Contributing
 
