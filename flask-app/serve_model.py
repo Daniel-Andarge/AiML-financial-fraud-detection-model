@@ -4,14 +4,18 @@ import pickle
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__)))
 from scripts.feature_engineering import FeatureEngineering
 
 app = Flask(__name__)
 
 # Load model
-with open('../models/fraud_detection_xgb_model.pkl', 'rb') as f:
+with open('models/fraud_detection_xgb_model.pkl', 'rb') as f:
     model = pickle.load(f)
+
+@app.route('/')
+def home():
+    return ("Welvome to ML based fraud detction")
 
 @app.route('/detect', methods=['POST'])
 def detect():
