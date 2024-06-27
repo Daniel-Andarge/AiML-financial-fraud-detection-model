@@ -60,7 +60,7 @@ png)
 
 ### Testing the api from Postman
 
-![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman.png)
+![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman_tst.png)
 
 ### Building Docker Image
 
