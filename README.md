@@ -68,7 +68,7 @@ After training and testing six models (three for each dataset), we selected the 
 
 ### Testing the API from Postman
 
-![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman.png)
+![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman_tst.png)
 
 ## Contributing
 
