@@ -15,9 +15,9 @@ with open('models/fraud_detection_xgb_model.pkl', 'rb') as f:
 
 @app.route('/')
 def home():
-    return ("Welvome to ML based fraud detction")
+    return ("Welcome to ML based fraud detction")
 
-@app.route('/detect', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def detect():
     try:
         json_data = request.get_json()
