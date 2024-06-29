@@ -57,7 +57,6 @@ After training and testing six models (three for each dataset), we selected the 
 
 ![testflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/test-flask.png)
 
-
 ### Building Docker Image
 
 ![build](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/build-docker-image.png)
