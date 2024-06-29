@@ -1,23 +1,23 @@
-# Machine Learning based Fraud Detection for E-commerce and Banking Transactions
+# Machine Learning-based Fraud Detection for E-commerce and Banking Transactions
 
-Adey Innovations Inc. seeks to enhance the detection of fraudulent transactions in e-commerce and banking sectors. This project focuses on developing advanced machine learning models to identify fraud with high accuracy by analyzing transaction data, creating sophisticated features, and implementing real-time monitoring systems. By improving fraud detection, Adey Innovations Inc. aims to reduce financial losses, bolster transaction security, and build stronger trust with customers and financial institutions. The project entails data preprocessing, feature engineering, model development, evaluation, and deployment, ensuring a comprehensive approach to combating fraud.
+Adey Innovations Inc. aims to enhance the detection of fraudulent transactions in the e-commerce and banking sectors. This project focuses on developing advanced machine learning models to identify fraud with high accuracy by analyzing transaction data, creating sophisticated features, and implementing real-time monitoring systems. By improving fraud detection, Adey Innovations Inc. aims to reduce financial losses, bolster transaction security, and build stronger trust with customers and financial institutions. The project entails data preprocessing, feature engineering, model development, evaluation, and deployment, ensuring a comprehensive approach to combating fraud.
 
 ## Table of Contents
 
-1. [Exploratory Data Analysis (EDA)line](<#1.-exploratory-data-analysis-(eda)>)
-2. [Model Building and Training](#2.-model-building-and-training)
-3. [Model Explainability Using SHAP](#3.-model-explainability-using-shap)
-4. [Model Deployment and API Development](#4.-model-deployment-and-api-development)
+1. [Exploratory Data Analysis (EDA)](#1-exploratory-data-analysis-eda)
+2. [Model Building and Training](#2-model-building-and-training)
+3. [Model Explainability Using SHAP](#3-model-explainability-using-shap)
+4. [Model Deployment and API Development](#4-model-deployment-and-api-development)
 5. [Contributing](#contributing)
 6. [License](#license)
 
 ## 1. Exploratory Data Analysis (EDA)
 
-### Univariate analysis
+### Univariate Analysis
 
 ![featureEng](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/eda/his1.png)
 
-### Bivariate analysis
+### Bivariate Analysis
 
 ### Feature Engineering
 
@@ -25,7 +25,7 @@ Adey Innovations Inc. seeks to enhance the detection of fraudulent transactions 
 
 ## 2. Model Building and Training
 
-After trainig and testing 6 models 3 for each datasets i select the below models
+After training and testing six models (three for each dataset), we selected the following models:
 
 #### 2.1 Fraud-IP Dataset - XGBoost Model
 
@@ -41,7 +41,7 @@ After trainig and testing 6 models 3 for each datasets i select the below models
 
 ### Summary Plot
 
-<img src="https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/summryPlot.png" alt="summeryplot" width="600"/>
+<img src="https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/summryPlot.png" alt="summary plot" width="600"/>
 
 ### Force Plot
 
@@ -49,18 +49,13 @@ After trainig and testing 6 models 3 for each datasets i select the below models
 
 ## 4. Model Deployment and API Development
 
-### Running the flask app
+### Running the Flask App
 
 ![runflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/run-flask.png)
 
-### Testing the api
+### Testing the API
 
-![testflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/test-flask.png
-png)
-
-### Testing the api from Postman
-
-![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman_tst.png)
+![testflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/test-flask.png)
 
 ### Building Docker Image
 
@@ -69,6 +64,10 @@ png)
 ### Running Docker Container
 
 ![runflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/docker-run.png)
+
+### Testing the API from Postman
+
+![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman_tst.png)
 
 ## Contributing
 
