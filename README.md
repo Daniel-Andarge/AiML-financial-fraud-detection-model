@@ -1,6 +1,5 @@
 # Machine Learning-based Fraud Detection for E-commerce and Banking Transactions
-
-Adey Innovations Inc. aims to enhance the detection of fraudulent transactions in the e-commerce and banking sectors. This project focuses on developing advanced machine learning models to identify fraud with high accuracy by analyzing transaction data, creating sophisticated features, and implementing real-time monitoring systems. By improving fraud detection, Adey Innovations Inc. aims to reduce financial losses, bolster transaction security, and build stronger trust with customers and financial institutions. The project entails data preprocessing, feature engineering, model development, evaluation, and deployment, ensuring a comprehensive approach to combating fraud.
+The Fraud Detection project for E-commerce and Banking Transactions aims to significantly improve the identification of fraudulent activities within these sectors. It focuses on developing advanced machine learning models that analyze transaction data, employ sophisticated feature engineering techniques, and implement real-time monitoring systems to achieve high accuracy in fraud detection. 
 
 ## Table of Contents
 
