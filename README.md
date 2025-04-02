@@ -1,74 +1,109 @@
 # Machine Learning-based Fraud Detection for E-commerce and Banking Transactions
-The Fraud Detection project for E-commerce and Banking Transactions aims to significantly improve the identification of fraudulent activities within these sectors. It focuses on developing advanced machine learning models that analyze transaction data, employ sophisticated feature engineering techniques, and implement real-time monitoring systems to achieve high accuracy in fraud detection. 
+
+This project aims to significantly enhance the identification of fraudulent activities within E-commerce and banking sectors. It focuses on developing advanced machine learning models that analyze transaction data, employ sophisticated feature engineering techniques, and implement real-time monitoring systems to achieve high accuracy in fraud detection.
 
 ## Table of Contents
 
-1. [Exploratory Data Analysis (EDA)](#1-exploratory-data-analysis-eda)
-2. [Model Building and Training](#2-model-building-and-training)
-3. [Model Explainability Using SHAP](#3-model-explainability-using-shap)
-4. [Model Deployment and API Development](#4-model-deployment-and-api-development)
-5. [Contributing](#contributing)
-6. [License](#license)
+1. [Project Overview](#project-overview)
+2. [Data Collection and Preprocessing](#data-collection-and-preprocessing)
+3. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+   - [Univariate Analysis](#univariate-analysis)
+   - [Bivariate Analysis](#bivariate-analysis)
+4. [Feature Engineering](#feature-engineering)
+5. [Model Building and Training](#model-building-and-training)
+   - [Fraud-IP Dataset - XGBoost Model](#fraud-ip-dataset---xgboost-model)
+   - [Credit Card Dataset - Logistic Regression with StandardScaler](#credit-card-dataset---logistic-regression-with-standardscaler)
+6. [Model Explainability Using SHAP](#model-explainability-using-shap)
+   - [Summary Plot](#summary-plot)
+   - [Force Plot](#force-plot)
+7. [Model Deployment and API Development](#model-deployment-and-api-development)
+   - [Running the Flask App](#running-the-flask-app)
+   - [Testing the API](#testing-the-api)
+   - [Building Docker Image](#building-docker-image)
+   - [Running Docker Container](#running-docker-container)
+   - [Testing the API from Postman](#testing-the-api-from-postman)
+8. [Project Report](#project-report)
+9. [Contributing](#contributing)
+10. [License](#license)
 
-## 1. Exploratory Data Analysis (EDA)
+## Project Overview
+
+This project aims to significantly improve the identification of fraudulent activities within these sectors. It focuses on developing advanced machine learning models that analyze transaction data, employ sophisticated feature engineering techniques, and implement real-time monitoring systems to achieve high accuracy in fraud detection.
+
+## Data Collection and Preprocessing
+
+Gather and preprocess transaction data to ensure it is clean and usable for analysis. This includes data cleaning, handling missing values, and normalization.
+
+## Exploratory Data Analysis (EDA)
+
+Analyze customer transaction characteristics to identify patterns and trends influencing fraud detection.
 
 ### Univariate Analysis
 
-![featureEng](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/eda/his1.png)
+![Univariate Analysis](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/eda/his1.png)
 
 ### Bivariate Analysis
 
-### Feature Engineering
+For detailed insights and visualizations related to bivariate analysis, please refer to the [EDA Notebook](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/notebooks/eda.ipynb).
 
-![featureEng](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/eda/featured_df.png)
 
-## 2. Model Building and Training
+## Feature Engineering
 
-After training and testing six models (three for each dataset), we selected the following models:
+Create new features that enhance the predictive power of the models based on insights from EDA.
 
-#### 2.1 Fraud-IP Dataset - XGBoost Model
+![Feature Engineering](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/eda/featured_df.png)
 
-![xgboost](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/xg1.png)
-![xgboost2](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/xg2.png)
+## Model Building and Training
 
-#### 2.2 Credit Card Dataset - Logistic Regression with StandardScaler
+After training and testing multiple models, we selected the following:
 
-![lr1](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/lr1.png)
-![lr2](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/lr2.png)
+### Fraud-IP Dataset - XGBoost Model
 
-## 3. Model Explainability Using SHAP
+![XGBoost Model](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/xg1.png)
+![XGBoost Model Evaluation](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/xg2.png)
+
+### Credit Card Dataset - Logistic Regression with StandardScaler
+
+![Logistic Regression Model](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/lr1.png)
+![Logistic Regression Model Evaluation](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/model-building/lr2.png)
+
+## Model Explainability Using SHAP
 
 ### Summary Plot
 
-<img src="https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/summryPlot.png" alt="summary plot" width="600"/>
+<img src="https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/summryPlot.png" alt="Summary Plot" width="600"/>
 
 ### Force Plot
 
-![forceplot](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/forcePlot.png)
+![Force Plot](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/shap-lime/forcePlot.png)
 
-## 4. Model Deployment and API Development
+## Model Deployment and API Development
 
 ### Running the Flask App
 
-![runflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/run-flask.png)
+![Running Flask App](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/run-flask.png)
 
 ### Testing the API
 
-![testflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/test-flask.png)
+![Testing the API](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/test-flask.png)
 
 ### Building Docker Image
 
-![build](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/build-docker-image.png)
+![Building Docker Image](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/build-docker-image.png)
 
 ### Running Docker Container
 
-![runflask](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/docker-run.png)
+![Running Docker Container](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/docker-run.png)
 
 ### Testing the API from Postman
 
-Generated 3 new instances and sent a request to the fraud detection model api.
+Generated new instances and sent requests to the fraud detection model API.
 
-![postman](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman_tst.png)
+![Postman Testing](https://github.com/Daniel-Andarge/AiML-financial-fraud-detection-model/blob/main/assets/api-docker/postman_tst.png)
+
+## Project Report
+
+For a comprehensive overview of the project, please refer to the project report: [Project Report PDF](https://drive.google.com/file/d/1QaTrq0ID5fQkPboBedNT7lTdlgZ6Pkme/view).
 
 ## Contributing
 
